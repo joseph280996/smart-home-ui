@@ -1,0 +1,5 @@
+export const CREATE_USER = 'CREATE_USER'
+export const SIGN_IN = 'SIGN_IN'
+export const DATA_RECEIVED = 'DATA_RECEIVED'
+export const NOT_SIGNIN = 'NOT_SIGNIN'
+export const GET_USER = 'GET_USER'
