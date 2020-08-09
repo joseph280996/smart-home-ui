@@ -6,6 +6,7 @@ import Dashboard from './Dashboard'
 import Authentication from './Authentication'
 import { RootStore } from '../reducers'
 import { getUser } from '../actions'
+import { WebSocketProvider } from '../contexts/WebSocketContext'
 
 const HomePage: React.FC<RouteComponentProps> = () => {
   const auth = useSelector((state: RootStore) => {
@@ -15,14 +16,22 @@ const HomePage: React.FC<RouteComponentProps> = () => {
   React.useEffect(() => {
     getUser(dispatch)()
   }, [dispatch])
-  if (!auth) return <Spinner animation="border" role="status" />
+  if (!auth || !auth.user) return <Spinner animation="border" role="status" />
 
   return (
     <Switch>
       <Route
         path="/"
         exact
-        render={() => (auth.user && auth.user.isSignedIn ? <Dashboard /> : <Redirect to="/auth" />)}
+        render={() => {
+          return auth.user && auth.user.isSignedIn ? (
+            <WebSocketProvider>
+              <Dashboard />
+            </WebSocketProvider>
+          ) : (
+            <Redirect to="/auth" />
+          )
+        }}
       />
       <Route path="/auth" component={Authentication} />
     </Switch>
