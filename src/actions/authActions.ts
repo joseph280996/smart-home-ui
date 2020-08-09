@@ -61,3 +61,16 @@ export const sendEmailReset = async (email: string): Promise<void> => {
     throw new Error(err.message)
   }
 }
+
+export const signOut = () => async (dispatch: Dispatch): Promise<void> => {
+  try {
+    sessionStorage.removeItem('uuid')
+    await FBAuth.signOut()
+    dispatch({
+      type: types.SIGN_OUT,
+      payload: null,
+    })
+  } catch (err) {
+    throw new Error(err.message)
+  }
+}
