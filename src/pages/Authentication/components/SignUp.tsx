@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useDispatch } from 'react-redux'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -12,7 +12,7 @@ import MiddleCard from '../../../components/MiddleCard'
 import FormGroup from '../../../components/FormGroup'
 import EmailSent from './EmailSent'
 
-const SignUpPage: React.FC = () => {
+export default function SignUpPage(): ReactElement {
   const [emailSent, setEmailSent] = React.useState(false)
   const dispatch = useDispatch()
   const SignUpFormik = useFormik({
@@ -178,5 +178,3 @@ const SignUpPage: React.FC = () => {
     </MiddleCard>
   )
 }
-
-export default SignUpPage
