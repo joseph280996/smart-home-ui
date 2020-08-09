@@ -8,8 +8,6 @@ import { SensorValueType } from '../reducers/types'
 function twentyElemMaintainer(arr: ReadonlyArray<SensorValueType>) {
   const subArr = arr.slice(arr.length - 21)
   if (typeof subArr === 'object') {
-    console.log(typeof subArr)
-    console.log(subArr)
     return subArr
   }
   return subArr
@@ -30,7 +28,6 @@ const RTChart: React.FC<LineChartProps> = (props: LineChartProps) => {
   const data = useSelector((state: RootStore) => {
     if (state.data && state.data.length > 20) {
       const res = twentyElemMaintainer(state.data)
-      console.log(res)
       return res
     }
     return state.data
@@ -42,7 +39,7 @@ const RTChart: React.FC<LineChartProps> = (props: LineChartProps) => {
 
   return (
     <LineChart width={width} height={height} data={data} margin={margin}>
-      {zoneData.map((zone, idx) => {
+      {zoneData.map((zone) => {
         return <Line key={zone.name} type="monotone" dataKey={zone.name} stroke={colorPicker(zone.name)} />
       })}
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />

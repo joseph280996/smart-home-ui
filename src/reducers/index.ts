@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import AuthReducers from './AuthReducers'
 import { sensorValueData, sensorData } from './SensorValueReducer'
-import { AuthReducerType, SensorValueType, SensorDataType } from './types'
+import { AuthReducerType, SensorValueType, ZonesData } from './types'
 
 export const rootReducer = combineReducers({
   auth: AuthReducers,
@@ -12,5 +12,5 @@ export const rootReducer = combineReducers({
 export type RootStore = {
   auth: AuthReducerType
   data: ReadonlyArray<SensorValueType>
-  sensorData: ReadonlyArray<SensorDataType>
+  sensorData: ReadonlyArray<ZonesData>
 }
