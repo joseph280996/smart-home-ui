@@ -11,7 +11,7 @@ export type SensorValueType = {
   [key: string]: string
 }
 
-export type SensorDataType = {
+export type ZonesData = {
   name: string
   sensorData: SensorValueData[]
 }

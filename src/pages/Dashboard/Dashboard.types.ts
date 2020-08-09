@@ -1,5 +1,5 @@
 import { AuthReducerType } from '../../reducers/types'
 
-export interface DashboardUseSelectorType {
+export type DashboardUseSelectorType = {
   user: AuthReducerType
 }

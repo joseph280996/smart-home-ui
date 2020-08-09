@@ -1,11 +1,11 @@
 import * as types from '../actions/types/variables'
 import { DispatchType, DataReceivedDispatchType } from '../actions/types/action.types'
-import { SensorValueType, SensorDataType } from './types'
+import { SensorValueType, ZonesData } from './types'
 
 export const sensorData = (
-  state: Array<SensorDataType> = [],
+  state: Array<ZonesData> = [],
   action: DispatchType<DataReceivedDispatchType>,
-): ReadonlyArray<SensorDataType> => {
+): ReadonlyArray<ZonesData> => {
   switch (action.type) {
     case types.DATA_RECEIVED: {
       const newDatum = action.payload.sensorData.map((zone, idx) => {
